@@ -15,17 +15,6 @@ class Solver:
 
     def convert_input(input: List[String]): List[Int] = 
 
-        /*
-        val splitter: String => Boolean = s => s.isEmpty
-
-        def splitList[A](l: List[A], p: A => Boolean):List[List[A]] = l match 
-            case Nil => Nil
-            case _ =>
-                val (h, t) = l.span(a => !p(a))
-                h :: splitList(t.drop(1), p)
-
-        splitList(input, splitter)
-    */
         var elf_cal: List[Int] = List[Int]()
         var elf_cals: List[Int] = List[Int]()
         for i <- input
@@ -39,6 +28,10 @@ class Solver:
         
         elf_cals
 
+    def get_top_n(elf_cals: List[Int]): Int =
+        
+        val sorted_elves = elf_cals.sortWith(_ > _)
+        sorted_elves.take(3).sum
 
 
     def solve() =
@@ -47,4 +40,5 @@ class Solver:
         //val cal_sums: Seq[Int] = for e <- elves_cals do e.foreach(sum)
         println("solving...")
         println(elves_cals.max)
+        println(get_top_n(elves_cals))
         println("solved")
