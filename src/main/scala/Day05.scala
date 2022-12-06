@@ -25,6 +25,17 @@ class Solver_05:
         do
             stacks(to).push(stacks(from).pop)
 
+    def make_move_9001(move: List[Int], stacks: List[Stack[Char]]) =
+        val n_moves = move(0)
+        val from = move(1)
+        val to = move(2)
+        val crane = new Stack[Char]
+        for i <- (0 to n_moves)
+        do
+            crane.push(stacks(from).pop)
+        
+        stacks(to).pushAll(crane.popAll)
+
     def solve() =
         val input = Helper().read_input(5)
         val max_start_height = 8
@@ -37,6 +48,6 @@ class Solver_05:
         val raw_moves = input.drop(move_start-1)
         val moves = raw_moves.map(parse_move)
         moves.take(5).foreach(println)
-        moves.foreach(make_move(_, stacks))
-        val top_crates = stacks.map(_.pop)
+        moves.foreach(make_move_9001(_, stacks))
+        val top_crates = stacks.map(_.top)
         println(top_crates.mkString)
