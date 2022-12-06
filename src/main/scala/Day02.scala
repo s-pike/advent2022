@@ -20,10 +20,21 @@ class Solver_02:
         val score = results(move) + my_plays(my_play)
         score
 
+    def score_round_2(move: String): Int =
+        val results = Map("X" -> 0, "Y" -> 3, "Z" -> 6)
+        val my_plays = Map(
+            "AZ" -> 2, "BX" -> 1, "CY" -> 3,
+            "AX" -> 3, "BY" -> 2, "CZ" -> 1,
+            "AY" -> 1, "BZ" -> 3, "CX" -> 2
+        )
+        val result = move.takeRight(1)
+        val score = results(result) + my_plays(move)
+        score
+
     def solve() =
         val input = read_input(2)
         val moves: List[String] = input.map(_.replaceAll("\\s+", ""))
-        val score: Int = moves.map(score_round(_)).sum
+        val score: Int = moves.map(score_round_2(_)).sum
         println(s"Score: $score")
         
 
