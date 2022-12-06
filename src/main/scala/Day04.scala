@@ -7,8 +7,9 @@ class Solver_04:
         ln.split(",").map(_.split("-").map(_.toInt))
 
     def a_in_b(a: Array[Int], b: Array [Int]): Boolean = 
-        a.map((b(0) to b(1)) contains _).reduce(_&&_)
-
+        //a.map((b(0) to b(1)) contains _).reduce(_&&_)
+        a.map((b(0) to b(1)) contains _).reduce(_||_)
+    
     def x_y_overlap(ln: Array[Array[Int]]): Boolean =
         val x = ln(0)
         val y = ln(1)
