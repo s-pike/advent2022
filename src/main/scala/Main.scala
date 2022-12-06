@@ -3,7 +3,7 @@ import scala.io.Source._
 @main def hello: Unit = 
   println("Hello world!")
   println(msg)
-  val s = Solver_04()
+  val s = Solver_05()
   s.solve()
   println("Goodbye world!")
 
