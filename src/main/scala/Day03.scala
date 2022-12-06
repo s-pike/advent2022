@@ -20,6 +20,10 @@ class Solver_03:
         val item_priorities = item_labels.zip(1 to 52).toMap
         items.map(item_priorities(_)).sum
 
+    def find_badge(packing_lists: List[String]): Set[Char] = 
+        packing_lists.toList.reduceLeft((x,y)=>x.filter(y contains _)).toSet
+
     def solve() =
         val input = read_input(3)
         println(input.map(split_packing_list).map(matches).map(priority_val).sum)
+        println(input.grouped(3).map(find_badge).map(priority_val).sum)
