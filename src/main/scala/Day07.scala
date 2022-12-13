@@ -57,11 +57,17 @@ class Solver_07:
         //graph.Dirs.foreach(println)
 
         //println(graph.Dirs(List("/")))
-        println(graph.get_dir_size(List("/")))
+        val top_level_size = graph.get_dir_size(List("/"))
+        graph.Dirs.foreach(println)
 
         //total size
         println(graph.Dirs.filter((t) => t._2.size <= 100000).map((t) => t._2.size).sum)
 
+        val req = 30000000
+        val tot = 70000000
+        val min_dir_size = req - (tot - top_level_size)
+        //min dir to be deleted
+        println(graph.Dirs.filter((t) => t._2.size >= min_dir_size).minBy(_._2.size))
         /*
         graph.add_dir("/", List[String]())
         graph.add_dir("c", List("/"))
